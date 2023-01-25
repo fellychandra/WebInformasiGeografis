@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="img/logo/logo.png" rel="icon">
+  <title>Kelompok - GIS</title>
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/ruang-admin.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="resources/ol/ol.css">
+  <link rel="stylesheet" href="resources/layerswitcher/ol-layerswitcher.css">
+  <link rel="stylesheet" href="resources/css/style.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/ol-geocoder@latest/dist/ol-geocoder.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/ol-popup@5.0.0/src/ol-popup.css" />
+  <!-- CSS only -->
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+          <img src="img/ad.png">
+        </div>
+        <div class="sidebar-brand-text mx-2">KELOMPOK GIS</div>
+      </a>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        <h4>Layers</h4>
+      </div>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="osm" name="osm" value="Open Street Map" checked onchange="toggleLayer(event);">
+          <label for="osm">Open Street Map</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="kota" name="kota" value="Kota Surakarta" checked onchange="toggleLayer(event);">
+          <label for="kota">Kota Surakarta</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="rumahsakit" name="rumahsakit" value="Rumah Sakit" checked
+            onchange="toggleLayer(event);">
+          <label for="rumahsakit">Rumah Sakit</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="wisata" name="wisata" value="Wisata" checked onchange="toggleLayer(event);">
+          <label for="wisata">Wisata</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="jalan" name="jalan" value="Jalan" checked onchange="toggleLayer(event);">
+          <label for="jalan">Jalan</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="danau" name="danau" value="Danau" checked onchange="toggleLayer(event);">
+          <label for="danau">Danau</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="jalan20m" name="jalan20m" value="Jalan Buffer 20m" checked
+            onchange="toggleLayer(event);">
+          <label for="jalan20m">Jalan Buffer 20m</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="sungai20m" name="sungai20m" value="Sungai Buffer 3m" checked
+            onchange="toggleLayer(event);">
+          <label for="sungai3m">Sungai Buffer 3m</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="stasiun" name="stasiun" value="Stasiun" checked onchange="toggleLayer(event);">
+          <label for="stasiun">Stasiun</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="bangunanbungai" name="bangunanbungai" value="Bangunan Sungai" checked
+            onchange="toggleLayer(event);">
+          <label for="bangunanbungai">Bangunan Sungai</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="teempatwisatarumahsakit" name="tempatwisatarumahsakit" value="Tempat Wisata Rumah Sakit" checked
+            onchange="toggleLayer(event);">
+          <label for="tempatwisatarumahsakit">Tempat Wisata Rumah Sakit Stasiun</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="haltebuffer200m" name="haltebuffer200m" value="Halte Buffer 200m" checked
+            onchange="toggleLayer(event);">
+          <label for="haltebuffer200m">Halte Buffer200m</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="stasiunbuffer200m" name="stasiunbuffer200m" value="Stasiun Buffer 200m" checked
+            onchange="toggleLayer(event);">
+          <label for="stasiunbuffer200m">Stasiun Buffer200m</label>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link collapsed">
+          <input type="checkbox" id="daerah2" name="daerah2" value="daerah2" checked
+            onchange="toggleLayer(event);">
+          <label for="daerah2">Daerah 2</label>
+        </div>
+      </li>
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar"></nav>
+        <div id="map"> </div>
+        <div id="popup-wisata" class="ol-popup-custom">
+          <a href="#" id="popup-closer-custom" class="ol-popup-closer"></a>
+          <div id="popup-content-custom"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/ruang-admin.min.js"></script>
+  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="resources/ol/ol.js"></script>
+  <script src="resources/layerswitcher/ol-layerswitcher.js"></script>
+  <script src="resources/js/main.js"></script>
+  <script src="resources/js/popup.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ol-geocoder"></script>
+  <script src="resources/js/ol-popup5.js"></script>
+  <script>
+    var geocoder = new Geocoder('nominatim', {
+      provider: 'photon',
+      lang: 'it-IT',
+      placeholder: 'Cari ...',
+      limit: 5,
+      keepOpen: true
+    });
+    map.addControl(geocoder);
+    var addr_popup = new ol.Overlay.Popup();
+    map.addOverlay(addr_popup);
+    var getf_popup = new ol.Overlay.Popup();
+    map.addOverlay(getf_popup);
+    geocoder.on('addresschosen', function (evt) {
+      map.getView().setCenter(evt.coordinate)
+      map.getView().setZoom(18)
+      window.setTimeout(function () {
+        addr_popup.show(evt.coordinate, evt.address.formatted);
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
